@@ -1,0 +1,6 @@
+GO:
+TÁCH KHỐI LỆNH
+LẶP 
+VD PRINT 1
+   GO 100
+LẶP KHỐI LỆNH 100 LẦN
