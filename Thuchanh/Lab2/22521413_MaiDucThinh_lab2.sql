@@ -500,6 +500,32 @@ AS
                WHERE MSSV=@MSSV)
 GO 
 SELECT * FROM DBO.IN_THONG_TIN_SV('13520001')
+SELECT * FROM DBO.IN_THONG_TIN_SV('13520005')
+SELECT * FROM DBO.IN_THONG_TIN_SV('13520008')
+
+/*Câu 3: Viết hàm in ra danh sách sinh viên thực hiện đề tài (MSSV, TENSV) có mã số đề
+tài (MSDT) được truyền vào.
+Thực thi với các trường hợp:
+• Truyền vào MSDT = ‘97004’.
+• Truyền vào MSDT = ‘97005’.
+• Truyền vào MSDT = ‘97011’.
+*/
+GO
+CREATE FUNCTION IN_DSSV_DETAI (@MSDT CHAR(6))
+RETURNS TABLE
+AS
+     RETURN (SELECT MSSV, TENSV
+               FROM SINHVIEN
+               WHERE MSSV IN (SELECT MSSV 
+                              FROM SV_DETAI
+                              WHERE MSDT=@MSDT)
+                    )
+GO
+SELECT * FROM DBO.IN_DSSV_DETAI('97004')
+SELECT * FROM DBO.IN_DSSV_DETAI('97005')
+SELECT * FROM DBO.IN_DSSV_DETAI('97011')
+
+
 
 /*4. Viết hàm in ra danh sách giảng viên (MSGV, TENGV) có phản biện đề tài.*/
 GO 
